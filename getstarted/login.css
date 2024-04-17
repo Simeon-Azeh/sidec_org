@@ -281,4 +281,15 @@ color: #ccc; /* Adjust icon color */
     padding: 2px;
     border-radius: 50%;
   }
- 
+ /* Error message styles */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Hide error messages by default */
+.error-message {
+    display: none;
+}
+

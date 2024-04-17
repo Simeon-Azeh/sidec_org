@@ -66,64 +66,63 @@
                 <span class="title">Registration</span>
                 <form action="#" id="form_sign">
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your name" required>
+                        <input type="text" id="name" placeholder="Enter your name" required>
                         <i class="fa-solid fa-user icon"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
-                        <input type="email" placeholder="Enter your email" required>
+                        <input type="email" id="email" placeholder="Enter your email" required>
                         <i class="fa-solid fa-envelope icon"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
                         <i class="fa-solid fa-school"></i>
-                         <select name="education-level" id="education-level" required>
-                                        <option value="" disabled selected>Level of education</option>
-                                        <option value="Form 5">Form 5</option>
-                                        <option value="Lowersixth">Lowersixth</option>
-                                        <option value="Uppersixth">Uppersixth</option>
-                                        <option value="University">University</option>
-                                        <option value="No formal education">No formal education</option>
-                            </select>
-                      </div>
-
-                      <div class="input-field">
-                        <i class="fa-solid fa-globe"></i>
-                         <select name="country" id="country" required>
-                                        <option value="" disabled selected>Country</option>
-                                        <option value="Cameroon">Cameroon</option>
-                                        <option value="Nigeria">Nigeria</option>
-                                        <option value="Rwanda">Rwanda</option>
-                                        <option value="Kenya">Kenya</option>
-                                        <option value="Zambia">Zambia</option>
-                                        <option value="other">other</option>
-                            </select>
-
-                      </div>
-                    
+                        <select name="education-level" id="education-level" required>
+                            <option value="" disabled selected>Level of education</option>
+                            <option value="Form 5">Form 5</option>
+                            <option value="Lowersixth">Lowersixth</option>
+                            <option value="Uppersixth">Uppersixth</option>
+                            <option value="University">University</option>
+                            <option value="No formal education">No formal education</option>
+                        </select>
+                        <div class="error"></div>
+                    </div>
+        
                     <div class="input-field">
-                        <input type="password" class="password" id="psw" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required>
-                        <i class="fa-solid fa-lock icon"></i> 
+                        <i class="fa-solid fa-globe"></i>
+                        <select name="country" id="country" required>
+                            <option value="" disabled selected>Country</option>
+                            <option value="Cameroon">Cameroon</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Rwanda">Rwanda</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Zambia">Zambia</option>
+                            <option value="other">other</option>
+                        </select>
+                        <div class="error"></div>
+                    </div>
+        
+                    <div class="input-field">
+                        <input type="password" id="password" class="password" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required>
+                        <i class="fa-solid fa-lock icon"></i>
                         <i class="fa-solid fa-eye-slash showHidePw"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Confirm password" required>
-                        <i class="fa-solid fa-lock icon"></i> 
+                        <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" required>
+                        <i class="fa-solid fa-lock icon"></i>
                         <i class="fa-solid fa-eye-slash showHidePw"></i>
                         <div class="error"></div>
                     </div>
                     <div class="checkbox-text">
                         <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck">
-                            <label for="logCheck" class="text">I agree to sidec's <a href="../terms.html">terms of use</a> as well as sidec's <a href="../privacy.html">Privacy policy</a></label>
+                            <input type="checkbox" id="termsCheck" required>
+                            <label for="termsCheck" class="text">I agree to sidec's <a href="../terms.html">terms of use</a> as well as sidec's <a href="../privacy.html">Privacy policy</a></label>
                         </div>
                         <div class="error"></div>
                     </div>
                     <div class="input-field button">
-                        <a href="discover.html">
-                        <input type="submit"  onclick="window.location.href='../main_pages/discover.html'"  value="Sign up">
-                        </a>
+                        <input type="submit" value="Sign up">
                     </div>
                 </form>
                 <div class="login-signup">
@@ -137,6 +136,98 @@
 
    
     <script src="login.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to show error message
+            function showError(input, message) {
+                const errorDiv = input.nextElementSibling;
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+    
+            // Function to clear error message
+            function clearError(input) {
+                const errorDiv = input.nextElementSibling;
+                errorDiv.textContent = '';
+                errorDiv.style.display = 'none';
+            }
+    
+            // Function to validate email format
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+    
+            const form = document.getElementById('form_sign');
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const educationLevel = document.getElementById('education-level');
+            const country = document.getElementById('country');
+            const termsCheck = document.getElementById('termsCheck');
+    
+            form.addEventListener('submit', function (event) {
+                let hasError = false;
+    
+                if (name.value.trim() === '') {
+                    showError(name, 'Please enter your name.');
+                    hasError = true;
+                } else {
+                    clearError(name);
+                }
+    
+                if (email.value.trim() === '' || !isValidEmail(email.value)) {
+                    showError(email, 'Please enter a valid email address.');
+                    hasError = true;
+                } else {
+                    clearError(email);
+                }
+    
+                if (educationLevel.value === '') {
+                    showError(educationLevel, 'Please select your education level.');
+                    hasError = true;
+                } else {
+                    clearError(educationLevel);
+                }
+    
+                if (country.value === '') {
+                    showError(country, 'Please select your country.');
+                    hasError = true;
+                } else {
+                    clearError(country);
+                }
+    
+                if (password.value.trim() === '') {
+                    showError(password, 'Please enter a password.');
+                    hasError = true;
+                } else {
+                    clearError(password);
+                }
+    
+                if (confirmPassword.value.trim() === '') {
+                    showError(confirmPassword, 'Please confirm your password.');
+                    hasError = true;
+                } else if (confirmPassword.value !== password.value) {
+                    showError(confirmPassword, 'Passwords do not match.');
+                    hasError = true;
+                } else {
+                    clearError(confirmPassword);
+                }
+    
+                if (!termsCheck.checked) {
+                    showError(termsCheck.parentNode, 'Please agree to the terms of use and privacy policy.');
+                    hasError = true;
+                } else {
+                    clearError(termsCheck.parentNode);
+                }
+    
+                if (hasError) {
+                    event.preventDefault(); // Prevent form submission if there are errors
+                }
+            });
+        });
+    </script>
    
     
 </body>
