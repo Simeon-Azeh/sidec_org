@@ -66,18 +66,21 @@
                 <span class="title">Registration</span>
                 <form action="#" id="form_sign">
                     <div class="input-field">
-                        <input type="text" id="name" placeholder="Enter your name" required>
+                        <label for="username"></label>
+                        <input type="text" id="username" placeholder="Enter your name">
                         <i class="fa-solid fa-user icon"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <label for="email"></label>
+                        <input type="text" id="email" placeholder="Enter your email">
                         <i class="fa-solid fa-envelope icon"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
                         <i class="fa-solid fa-school"></i>
-                        <select name="education-level" id="education-level" required>
+                        <label for="education-level"></label>
+                        <select name="education-level" id="education-level">
                             <option value="" disabled selected>Level of education</option>
                             <option value="Form 5">Form 5</option>
                             <option value="Lowersixth">Lowersixth</option>
@@ -90,7 +93,8 @@
         
                     <div class="input-field">
                         <i class="fa-solid fa-globe"></i>
-                        <select name="country" id="country" required>
+                        <label for="country"></label>
+                        <select name="country" id="country">
                             <option value="" disabled selected>Country</option>
                             <option value="Cameroon">Cameroon</option>
                             <option value="Nigeria">Nigeria</option>
@@ -103,20 +107,23 @@
                     </div>
         
                     <div class="input-field">
-                        <input type="password" id="password" class="password" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required>
+                        <label for="password"></label>
+                        <input type="password" id="password" class="password" placeholder="Enter password">
                         <i class="fa-solid fa-lock icon"></i>
                         <i class="fa-solid fa-eye-slash showHidePw"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
-                        <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" required>
+                        <label for="confirmPassword"></label>
+                        <input type="password" id=" " class="password" placeholder="Confirm password">
                         <i class="fa-solid fa-lock icon"></i>
                         <i class="fa-solid fa-eye-slash showHidePw"></i>
                         <div class="error"></div>
                     </div>
                     <div class="checkbox-text">
                         <div class="checkbox-content">
-                            <input type="checkbox" id="termsCheck" required>
+                
+                            <input type="checkbox" id="termsCheck">
                             <label for="termsCheck" class="text">I agree to sidec's <a href="../terms.html">terms of use</a> as well as sidec's <a href="../privacy.html">Privacy policy</a></label>
                         </div>
                         <div class="error"></div>
@@ -136,98 +143,7 @@
 
    
     <script src="login.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Function to show error message
-            function showError(input, message) {
-                const errorDiv = input.nextElementSibling;
-                errorDiv.textContent = message;
-                errorDiv.style.display = 'block';
-            }
-    
-            // Function to clear error message
-            function clearError(input) {
-                const errorDiv = input.nextElementSibling;
-                errorDiv.textContent = '';
-                errorDiv.style.display = 'none';
-            }
-    
-            // Function to validate email format
-            function isValidEmail(email) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return emailRegex.test(email);
-            }
-    
-            const form = document.getElementById('form_sign');
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            const confirmPassword = document.getElementById('confirmPassword');
-            const educationLevel = document.getElementById('education-level');
-            const country = document.getElementById('country');
-            const termsCheck = document.getElementById('termsCheck');
-    
-            form.addEventListener('submit', function (event) {
-                let hasError = false;
-    
-                if (name.value.trim() === '') {
-                    showError(name, 'Please enter your name.');
-                    hasError = true;
-                } else {
-                    clearError(name);
-                }
-    
-                if (email.value.trim() === '' || !isValidEmail(email.value)) {
-                    showError(email, 'Please enter a valid email address.');
-                    hasError = true;
-                } else {
-                    clearError(email);
-                }
-    
-                if (educationLevel.value === '') {
-                    showError(educationLevel, 'Please select your education level.');
-                    hasError = true;
-                } else {
-                    clearError(educationLevel);
-                }
-    
-                if (country.value === '') {
-                    showError(country, 'Please select your country.');
-                    hasError = true;
-                } else {
-                    clearError(country);
-                }
-    
-                if (password.value.trim() === '') {
-                    showError(password, 'Please enter a password.');
-                    hasError = true;
-                } else {
-                    clearError(password);
-                }
-    
-                if (confirmPassword.value.trim() === '') {
-                    showError(confirmPassword, 'Please confirm your password.');
-                    hasError = true;
-                } else if (confirmPassword.value !== password.value) {
-                    showError(confirmPassword, 'Passwords do not match.');
-                    hasError = true;
-                } else {
-                    clearError(confirmPassword);
-                }
-    
-                if (!termsCheck.checked) {
-                    showError(termsCheck.parentNode, 'Please agree to the terms of use and privacy policy.');
-                    hasError = true;
-                } else {
-                    clearError(termsCheck.parentNode);
-                }
-    
-                if (hasError) {
-                    event.preventDefault(); // Prevent form submission if there are errors
-                }
-            });
-        });
-    </script>
+  
    
     
 </body>

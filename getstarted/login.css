@@ -90,12 +90,6 @@ body {
     font-size: 16px;
     transition: all 0.2s ease;
 }
-.input-field input:is(:focus, :valid){
-    border-bottom-color: #9835ff;
-}
-.input-field input:is(:focus, :valid) ~ i{
-  color: #9835ff;
-}
 .input-field i {
     position: absolute;
     top: 50%;
@@ -282,14 +276,18 @@ color: #ccc; /* Adjust icon color */
     border-radius: 50%;
   }
  /* Error message styles */
-.error-message {
-    color: red;
+.input-field.success input {
+    border-color: #2ecc71;
+  }
+  
+  .input-field.error input {
+    border-color: #e74c3c;
+  }
+  
+  .input-field .error{
+    color: #e74c3c;
     font-size: 14px;
     margin-top: 5px;
-}
-
-/* Hide error messages by default */
-.error-message {
-    display: none;
-}
-
+    height: 13px;
+  }
+ 
