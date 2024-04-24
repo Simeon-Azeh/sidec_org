@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/03ca4ba95f.js" crossorigin="anonymous"></script>
+    <!--Adding the remix icon cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>login</title>
     <link rel="icon" href="images/Asset 6.png" type="image/png">
 </head>
@@ -69,12 +71,14 @@
                         <label for="username"></label>
                         <input type="text" id="username" placeholder="Enter your name">
                         <i class="fa-solid fa-user icon"></i>
+                        <i class="ri-error-warning-line error-icon"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
                         <label for="email"></label>
                         <input type="text" id="email" placeholder="Enter your email">
                         <i class="fa-solid fa-envelope icon"></i>
+                        <i class="ri-error-warning-line error-icon"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
@@ -88,6 +92,7 @@
                             <option value="University">University</option>
                             <option value="No formal education">No formal education</option>
                         </select>
+                        <i class="ri-error-warning-line error-icon"></i>
                         <div class="error"></div>
                     </div>
         
@@ -103,6 +108,7 @@
                             <option value="Zambia">Zambia</option>
                             <option value="other">other</option>
                         </select>
+                        <i class="ri-error-warning-line error-icon"></i>
                         <div class="error"></div>
                     </div>
         
@@ -111,21 +117,26 @@
                         <input type="password" id="password" class="password" placeholder="Enter password">
                         <i class="fa-solid fa-lock icon"></i>
                         <i class="fa-solid fa-eye-slash showHidePw"></i>
+                        <i class="ri-error-warning-line error-icon"></i>
                         <div class="error"></div>
                     </div>
                     <div class="input-field">
                         <label for="confirmPassword"></label>
-                        <input type="password" id=" " class="password" placeholder="Confirm password">
+                        <input type="password" id="confirmPassword" class="password" placeholder="Confirm password">
                         <i class="fa-solid fa-lock icon"></i>
                         <i class="fa-solid fa-eye-slash showHidePw"></i>
+                        <i class="ri-error-warning-line error-icon"></i>
+                        
                         <div class="error"></div>
                     </div>
+
                     <div class="checkbox-text">
                         <div class="checkbox-content">
                 
                             <input type="checkbox" id="termsCheck">
                             <label for="termsCheck" class="text">I agree to sidec's <a href="../terms.html">terms of use</a> as well as sidec's <a href="../privacy.html">Privacy policy</a></label>
                         </div>
+                     
                         <div class="error"></div>
                     </div>
                     <div class="input-field button">

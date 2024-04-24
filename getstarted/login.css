@@ -76,10 +76,10 @@ body {
     position: relative;
     height: 50px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 .input-field input {
-    position: absolute;
+  
     height: 100%;
     width: 100%;
     padding: 0 35px;
@@ -109,7 +109,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .checkbox-text .checkbox-content {
     display: flex;
@@ -277,17 +277,40 @@ color: #ccc; /* Adjust icon color */
   }
  /* Error message styles */
 .input-field.success input {
-    border-color: #2ecc71;
+    border-bottom-color: #2ecc71;
+  }
+  .input-field.error input {
+    border-bottom-color: #e74c3c;
+  }
+  .input-field.error select {
+    border-bottom-color: #e74c3c;
   }
   
-  .input-field.error input {
-    border-color: #e74c3c;
-  }
+ 
   
   .input-field .error{
     color: #e74c3c;
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 8px;
+    margin-left: 30px;
     height: 13px;
   }
+  
+
+ .input-field .error-icon {
+    position: absolute;
+    top: 67px;
+    left: 10px; /* Adjust positioning as needed */
+    transform: translateY(-50%);
+    display: none; /* Initially hide the error icon */
+    color: #e74c3c; /* Adjust color as needed */
+}
+#form_sign > div:nth-child(4) > i.ri-error-warning-line.error-icon,
+#form_sign > div:nth-child(3) > i.ri-error-warning-line.error-icon {
+    top: 58px;
+}
+
+.input-field.error .error-icon {
+    display: block; /* Show the error icon when input is in error state */
+}
  
